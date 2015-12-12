@@ -62,6 +62,7 @@ class homebrew(
     user    => $::boxen_user,
     creates => "${installdir}/.git",
     require => File[$installdir],
+    timeout => 0    
   }
 
   File {
