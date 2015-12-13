@@ -53,16 +53,13 @@ class homebrew(
   }
 
   exec { "install homebrew to ${installdir}":
-    command => "git init -q &&
-                git config remote.origin.url https://github.com/${repo} &&
-                git config remote.origin.fetch master:refs/remotes/origin/master &&
-                git fetch origin master:refs/remotes/origin/master -n &&
+    command => "git clone https://github.com/${repo}.git . &&
                 git reset --hard origin/master",
     cwd     => $installdir,
     user    => $::boxen_user,
     creates => "${installdir}/.git",
     require => File[$installdir],
-    timeout => 0    
+    timeout => 0
   }
 
   File {
