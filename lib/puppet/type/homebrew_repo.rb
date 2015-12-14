@@ -1,7 +1,7 @@
 Puppet::Type.newtype(:homebrew_repo) do
   newparam(:path) do
     isnamevar
-    
+
     validate do |v|
       if v.nil?
         raise Puppet::ParseError, "Homebrew_repo requires a path parameter!"
@@ -13,7 +13,7 @@ Puppet::Type.newtype(:homebrew_repo) do
     newvalue(/.+/) do
       provider.brew_update
     end
-    
+
     def retrieve
       provider.check_min_revision
     end
@@ -23,7 +23,9 @@ Puppet::Type.newtype(:homebrew_repo) do
     desc "User to run this operation as."
 
     defaultto do
-      Facter.value(:boxen_user) || Facter.value(:id) || "root"
+      user = Facter.value(:boxen_user) || Facter.value(:id) || "root"
+      puts "Repo User: " + user
+      user
     end
   end
 end

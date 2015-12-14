@@ -166,7 +166,9 @@ Puppet::Type.type(:package).provide :homebrew, :parent => Puppet::Provider::Pack
   end
 
   def default_user
-    Facter.value(:boxen_user) || Facter.value(:id) || "root"
+    user = Facter.value(:boxen_user) || Facter.value(:id) || "root"
+    puts "Package User: " + user
+    user
   end
 
   def s3_host
