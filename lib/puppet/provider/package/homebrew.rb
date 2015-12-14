@@ -167,7 +167,7 @@ Puppet::Type.type(:package).provide :homebrew, :parent => Puppet::Provider::Pack
 
   def default_user
     user = Facter.value(:boxen_user) || Facter.value(:id) || "root"
-    if not user
+    if not user:
         puts "Package User: " + user.to_s
     elsif
         puts "Package User: Nil"
