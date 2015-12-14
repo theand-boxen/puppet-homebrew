@@ -24,11 +24,7 @@ Puppet::Type.newtype(:homebrew_repo) do
 
     defaultto do
       user = Facter.value(:boxen_user) || Facter.value(:id) || "root"
-      if not user:
-          puts "Repo User: " + user.to_s
-      elsif
-          puts "Repo User: Nil" 
-      end
+      puts "Repo User: " + user.to_s
       user
     end
   end
