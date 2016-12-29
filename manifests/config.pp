@@ -16,5 +16,5 @@ class homebrew::config {
 
   $brewsdir   = "${tapsdir}/boxen/homebrew-brews"
 
-  $min_revision = 'd5b6ecfc5078041ddf5f61b259c57f81d5c50fcc'
+  $min_revision = '6648ff130781279de560ad1ac77379a6250d16e4'
 }
